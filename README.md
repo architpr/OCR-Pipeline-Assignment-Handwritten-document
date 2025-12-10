@@ -75,17 +75,6 @@ for _, text, conf in results:
 ```
 
 
-## ☁️ Deployment (Streamlit Cloud)
-
-This app is ready to be deployed on **Streamlit Cloud** for free!
-
-1.  **Push to GitHub** (Already done).
-2.  Go to [share.streamlit.io](https://share.streamlit.io).
-3.  Click **"New App"**.
-4.  Select this repository (`OCR-Pipeline-Assignment-Handwritten-document`).
-5.  Set **Main file path** to `app.py`.
-6.  Click **"Deploy!"**.
-
 **Note on Resources**:
 *   The system downloads large models (~1.5GB) on the first run.
 *   The boot process might take 2-3 minutes.
