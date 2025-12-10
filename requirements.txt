@@ -1,0 +1,10 @@
+easyocr
+opencv-python
+matplotlib
+numpy
+streamlit
+transformers
+torch
+torchvision
+pillow
+sentencepiece
