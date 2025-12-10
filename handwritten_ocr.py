@@ -6,6 +6,7 @@ import os
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 from PIL import Image
 import torch
+import gc
 
 class HandwrittenOCR:
     """
@@ -20,16 +21,18 @@ class HandwrittenOCR:
         2. Microsoft TrOCR (Recognition).
         """
         print("Initializing EasyOCR (for detection)...")
-        # Initialize EasyOCR just for detection
-        self.reader = easyocr.Reader(['en'], gpu=True)
+        # Initialize EasyOCR just for detection (Force CPU to save memory)
+        self.reader = easyocr.Reader(['en'], gpu=False)
+        gc.collect() # Free up memory
         
         print("Initializing Microsoft TrOCR (for recognition)...")
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = "cpu" # Force CPU for Cloud Stability
         print(f"Using device: {self.device}")
         
         # Load TrOCR model and processor (Small version for Cloud Stability)
         self.processor = TrOCRProcessor.from_pretrained('microsoft/trocr-small-handwritten')
         self.model = VisionEncoderDecoderModel.from_pretrained('microsoft/trocr-small-handwritten').to(self.device)
+        gc.collect() # Free up memory
         
         print("Initialization complete.")
 
