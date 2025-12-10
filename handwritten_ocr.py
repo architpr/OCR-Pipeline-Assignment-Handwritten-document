@@ -27,9 +27,9 @@ class HandwrittenOCR:
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         print(f"Using device: {self.device}")
         
-        # Load TrOCR model and processor
-        self.processor = TrOCRProcessor.from_pretrained('microsoft/trocr-base-handwritten')
-        self.model = VisionEncoderDecoderModel.from_pretrained('microsoft/trocr-base-handwritten').to(self.device)
+        # Load TrOCR model and processor (Small version for Cloud Stability)
+        self.processor = TrOCRProcessor.from_pretrained('microsoft/trocr-small-handwritten')
+        self.model = VisionEncoderDecoderModel.from_pretrained('microsoft/trocr-small-handwritten').to(self.device)
         
         print("Initialization complete.")
 
